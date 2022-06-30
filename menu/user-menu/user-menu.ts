@@ -1,12 +1,12 @@
+import { User } from './../../model/User';
 import { AdminMenu } from './../admin-menu/admin-person-menu';
 import { Rent } from './Rent-user-menu';
-import { ShowIdolInformation } from './../sub-menu-admin/show-Idol-menu';
 import * as rl from 'readline-sync';
 
 let rent = new Rent
 let addAnIDols = new AdminMenu()
 export class UserMenu {
-    runForUser() {
+    runForUser(user: User) {
         let choice = -1;
         do {
 
@@ -18,7 +18,8 @@ export class UserMenu {
             choice = +rl.question('What do your choose?')
             switch (choice) {
                 case 1: {
-                    rent.run();
+                    let id = user.id
+                    rent.run(id);
                     break;
                 }
                 case 2: {

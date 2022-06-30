@@ -1,3 +1,4 @@
+import { RentIdols } from './Rent';
 export class Person {
     private _id: number = 1;
     private _name: string;
@@ -73,6 +74,7 @@ export class Person {
         this._age = value;
     }
 
+	
 
 
 }

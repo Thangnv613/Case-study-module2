@@ -6,6 +6,7 @@ export class User {
     private _phoneNumber: string;
     private _username: string;
     private _role: number = 0;
+    
     constructor(username: string,  password: string, phoneNumber: string,name: string) {
         this._name = name;
         this._password = password;

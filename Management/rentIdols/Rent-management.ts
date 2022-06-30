@@ -1,4 +1,4 @@
-import { UserManagement } from './../user-management/user-management';
+import { Person } from './../../model/person';
 import { RentIdols } from './../../model/Rent';
 import { IRentManagement } from './I-Rent-management';
 
@@ -18,8 +18,8 @@ export class RentManagement implements IRentManagement {
         let index = -1;
         for (let i = 0; i < RentManagement.rentIdol.length; i++) {
             if (id == RentManagement.rentIdol[i].id) {
-                index = i;
-                break;
+                index = i;             
+                console.log(i)   
             }
         } return index;
     }

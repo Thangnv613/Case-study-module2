@@ -41,6 +41,24 @@ export class Idol implements IManagement<Person>{
         }
         return index;
     }
+
+
+
+
+    findByPerson(id: number): any {
+        let index = -1;
+        for (let i = 0; i < Idol._idol.length; i++) {
+            if (id == Idol._idol[i].id) {
+                index = i;
+                break;
+            }
+        }
+        return Idol._idol[index];
+    }
+
+
+
+
     findByAge(age: number): any {
         let personByAge = [];
         for (let i = 0; i < Idol._idol.length; i++) {

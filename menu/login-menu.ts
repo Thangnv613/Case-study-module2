@@ -49,7 +49,7 @@ export class LoginMenu {
         console.log('Register successfully created');
         console.log('------------------------------------------------------------------------------------------------');
         console.table(this.userManagement.getAll());
-        
+
     }
     loginForm() {
     
@@ -59,35 +59,33 @@ export class LoginMenu {
         
         if (currentUserName) {
             if (currentUserName.role == ROLE.ADMIN) {
+                return adminMenu.runforIdol();
                 
-                adminMenu.runforIdol();
+    
                 
             }
             else {
-                userMenu.runForUser();
+              return  userMenu.runForUser(currentUserName);
             }
         
         }else {
             console.log('Username or password is incorrect');
         }
+        
     }
     createUser(): User {
         let username = this.createUserName();
-
         let password = this.createPassword();
 
         this.ConfirmPassword(password);;
 
         let phoneNumber = this.creatPhoneNumber();;
-
-
         let name = rl.question('Enter your name: ');
 
         let user = new User(username, password, phoneNumber, name);
         return user;
 
     }
-
     createUserName(): string {
         let username = '';
 
@@ -98,7 +96,6 @@ export class LoginMenu {
             if (currentUserName) {
                 isValidUserName = false;
                 console.log('UserName already exists!');
-
             }
             else {
                 isValidUserName = true;
@@ -114,11 +111,11 @@ export class LoginMenu {
         let password = '';
         let isValidPassword = true;
         do {
-            console.log('Password must minimum eight characters, at least one uppercase letter, one lowercase letter and one number');
+            console.log('Password must minimum eight characters, at least one uppercase letter, one lowercase letter and one number\n');
             password = rl.question('Enter Password: ')
             if (!regexForPassword.test(password)) {
                 isValidPassword = false;
-                console.log('Minimum eight characters, at least one uppercase letter, one lowercase letter and one number!');
+                console.log('\nMinimum eight characters, at least one uppercase letter, one lowercase letter and one number!\n');
             }
             else {
                 isValidPassword = true;
@@ -151,5 +148,4 @@ export class LoginMenu {
         } while (!isValidPhoneNumber);
         return phoneNumber;
     }
-       
 }
