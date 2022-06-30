@@ -16,10 +16,10 @@ export class LoginMenu {
     run() {
         let choice = -1;
         do {
-            console.log('---------------------  Gét Gô     --------------------');
-            console.log('---------------------  1.Login    ---------------------');
-            console.log('---------------------  2.Register ---------------------');
-            console.log('---------------------  0.Exit     ---------------------');
+            console.log(' ----------------------------------------------------------------  Gét Gô     -----------------------------------------------------------------');
+            console.log(' ----------------------------------------------------------------  1. Sign Up -----------------------------------------------------------------');
+            console.log(' ----------------------------------------------------------------  2. Sign In -----------------------------------------------------------------');
+            console.log(' ----------------------------------------------------------------  0. Exit    -----------------------------------------------------------------');
             choice = +rl.question('What do you choose?');
 
 
@@ -46,23 +46,19 @@ export class LoginMenu {
         let user = this.createUser();
 
         this.userManagement.createNew(user);
-        console.log('Register successfully created');
+        console.log('\nRegister successfully created\n\nWELCOME TO MY COMPANY!\n');
         console.log('------------------------------------------------------------------------------------------------');
-        console.table(this.userManagement.getAll());
 
     }
     loginForm() {
     
-        let username = rl.question('Enter your username: ');
+        let username = rl.question('Enter your username: \n');
         let password = rl.question('Enter your password: ');
         let currentUserName = this.userManagement.isLogin(username, password);
         
         if (currentUserName) {
             if (currentUserName.role == ROLE.ADMIN) {
                 return adminMenu.runforIdol();
-                
-    
-                
             }
             else {
               return  userMenu.runForUser(currentUserName);
